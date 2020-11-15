@@ -18,10 +18,6 @@ const db = new sqlite3.Database('./db/election.db', err => {
     console.log('Connected to the election database.');
 });
 
-// db.all(`SELECT * FROM candidates`, (err, rows) => {
-//     console.log(rows);
-// });
-
 // Get all candidates
 app.get('/api/candidates', (req, res) => {
     const sql = `SELECT * FROM candidates`;
@@ -38,14 +34,6 @@ app.get('/api/candidates', (req, res) => {
         });
     });
 });
-
-// GET a single candidate
-// db.get(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(row);
-// });
 
 // Get single candidate
 app.get('/api/candidate/:id', (req, res) => {
@@ -65,13 +53,6 @@ app.get('/api/candidate/:id', (req, res) => {
     });
 });
 
-// Delete a candidate
-// db.run(`DELETE FROM candidates WHERE id = ?`, 1, function (err, result) {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(result, this, this.changes);
-// });
 // Delete a candidate
 app.delete('/api/candidate/:id', (req, res) => {
     const sql = `DELETE FROM candidates WHERE id = ?`;
@@ -115,17 +96,7 @@ app.post('/api/candidate', ({ body }, res) => {
 });
 
 
-// Create a candidate
-// const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) 
-//               VALUES (?,?,?,?)`;
-// const params = [1, 'Ronald', 'Firbank', 1];
-// // ES5 function, not arrow function, to use this
-// db.run(sql, params, function (err, result) {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(result, this.lastID);
-// });
+
 
 // Create a candidate
 app.post('/api/candidate', ({ body }, res) => {
